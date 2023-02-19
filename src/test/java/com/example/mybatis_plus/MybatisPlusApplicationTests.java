@@ -47,6 +47,6 @@ class MybatisPlusApplicationTests {
         User user = new User();
         user.setAge(100);
         user.setId(4L);
-//        userMapper.updateById(user);
+        userMapper.updateById(user);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.mybatis_plus;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.TableFieldInfo;
 import com.example.mybatis_plus.domain.User;
 import com.example.mybatis_plus.mapper.UserMapper;
@@ -104,5 +105,13 @@ class MybatisPlusApplicationTests {
         queryWrapper.select(tableFieldInfo -> !"address".equals(tableFieldInfo.getColumn()));
         List<User> users = userMapper.selectList(queryWrapper);
         System.out.println(users);
+    }
+
+    @Test
+    void testWrapper07() {
+        UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.set("age", 99);
+        updateWrapper.ge("id", 1);
+        userMapper.update(null, updateWrapper);
     }
 }

@@ -137,4 +137,9 @@ class MybatisPlusApplicationTests {
         queryWrapper.eq("id", 1);
         userMapper.findUserByWrapper(queryWrapper);
     }
+
+    @Test
+    void testWrapper11() {
+
+    }
 }

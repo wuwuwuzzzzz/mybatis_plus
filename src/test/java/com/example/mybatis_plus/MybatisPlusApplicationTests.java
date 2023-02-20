@@ -3,7 +3,9 @@ package com.example.mybatis_plus;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.TableFieldInfo;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.mybatis_plus.domain.User;
 import com.example.mybatis_plus.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
@@ -140,6 +142,10 @@ class MybatisPlusApplicationTests {
 
     @Test
     void testWrapper11() {
-
+        IPage<User> page = new Page<>();
+        page.setSize(2);
+        page.setCurrent(1);
+        IPage<User> userIPage = userMapper.selectPage(page, null);
+        System.out.println(userIPage);
     }
 }

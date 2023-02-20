@@ -176,4 +176,32 @@ class MybatisPlusApplicationTests {
         User user = userService.getUser();
         System.out.println(user);
     }
+
+    @Test
+    void testWrapper15() {
+        Orders orders = new Orders();
+        orders.setPrice(5000);
+        orders.setUserId(1);
+        ordersMapper.insert(orders);
+    }
+
+    @Test
+    void testWrapper16() {
+        Orders orders = new Orders();
+        orders.setPrice(6000);
+        orders.setRemark("哈哈哈哈");
+        orders.setId(4L);
+        ordersMapper.updateById(orders);
+    }
+
+    @Test
+    void testWrapper17() {
+        ordersMapper.deleteById(4L);
+    }
+
+    @Test
+    void testWrapper18() {
+        List<Orders> orders = ordersMapper.selectList(null);
+        System.out.println(orders);
+    }
 }

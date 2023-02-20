@@ -1,9 +1,13 @@
 package com.example.mybatis_plus.domain;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 /**
@@ -32,6 +36,11 @@ public class Orders {
     private String remark;
 
     /**
+     * 用户ID
+     */
+    private Integer userId;
+
+    /**
      * 创建人
      */
     private String createBy;
@@ -39,7 +48,8 @@ public class Orders {
     /**
      * 创建时间
      */
-    private Date createTime;
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
 
     /**
      * 更新人
@@ -49,7 +59,8 @@ public class Orders {
     /**
      * 更新时间
      */
-    private Date updateTime;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
 
     /**
      * 版本
@@ -64,6 +75,7 @@ public class Orders {
     /**
      * 用户名
      */
+    @TableField(exist = false)
     private String userName;
 }
 

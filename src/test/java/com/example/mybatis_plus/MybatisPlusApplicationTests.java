@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.TableFieldInfo;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.mybatis_plus.domain.User;
+import com.example.mybatis_plus.mapper.OrdersMapper;
 import com.example.mybatis_plus.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,13 +16,15 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
 
 @SpringBootTest
 class MybatisPlusApplicationTests {
 
     @Resource
     private UserMapper userMapper;
+
+    @Resource
+    private OrdersMapper ordersMapper;
 
     @Test
     void testQueryList() {
@@ -147,5 +150,10 @@ class MybatisPlusApplicationTests {
         page.setCurrent(1);
         IPage<User> userIPage = userMapper.selectPage(page, null);
         System.out.println(userIPage.getRecords());
+    }
+
+    @Test
+    void testWrapper12() {
+
     }
 }

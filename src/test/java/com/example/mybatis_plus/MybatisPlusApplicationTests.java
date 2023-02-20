@@ -155,7 +155,10 @@ class MybatisPlusApplicationTests {
 
     @Test
     void testWrapper12() {
-        List<Orders> orders = ordersMapper.findOrders();
-        System.out.println(orders);
+        Page<Orders> page = new Page<>();
+        page.setSize(2);
+        page.setCurrent(1);
+        IPage<Orders> orders = ordersMapper.findOrders(page);
+        System.out.println(orders.getRecords());
     }
 }

@@ -170,4 +170,10 @@ class MybatisPlusApplicationTests {
         List<User> list = userService.list();
         System.out.println(list);
     }
+
+    @Test
+    void testWrapper14() {
+        User user = userService.getUser();
+        System.out.println(user);
+    }
 }

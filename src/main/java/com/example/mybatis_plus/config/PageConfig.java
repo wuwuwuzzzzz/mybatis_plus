@@ -12,17 +12,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class PageConfig {
 
-    /**
-     * Mybatis-Plus分页(3.4.0之后的版本)
-     *
-     * @return com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor
-     * @author wxz
-     * @date 14:40 2023/2/20
-     */
-    @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
-        mybatisPlusInterceptor.addInnerInterceptor(new PaginationInnerInterceptor());
-        return mybatisPlusInterceptor;
-    }
+
 }

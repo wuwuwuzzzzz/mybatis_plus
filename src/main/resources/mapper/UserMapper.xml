@@ -6,4 +6,8 @@
         from User
         where id = #{id,jdbcType=BIGINT}
     </select>
+
+    <select id="findUserByWrapper" resultType="com.example.mybatis_plus.domain.User">
+        select * from User ${ew.customSqlSegment}
+    </select>
 </mapper>

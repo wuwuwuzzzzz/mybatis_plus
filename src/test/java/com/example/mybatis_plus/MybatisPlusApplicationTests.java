@@ -146,6 +146,6 @@ class MybatisPlusApplicationTests {
         page.setSize(2);
         page.setCurrent(1);
         IPage<User> userIPage = userMapper.selectPage(page, null);
-        System.out.println(userIPage);
+        System.out.println(userIPage.getRecords());
     }
 }

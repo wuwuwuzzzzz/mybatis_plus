@@ -130,4 +130,11 @@ class MybatisPlusApplicationTests {
         User user = userMapper.findUser(1L);
         System.out.println(user);
     }
+
+    @Test
+    void testWrapper10() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id", 1);
+        userMapper.findUserByWrapper(queryWrapper);
+    }
 }

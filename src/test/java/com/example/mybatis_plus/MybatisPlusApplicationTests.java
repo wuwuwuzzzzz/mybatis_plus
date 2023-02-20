@@ -124,4 +124,10 @@ class MybatisPlusApplicationTests {
         List<User> users = userMapper.selectList(lambdaQueryWrapper);
         System.out.println(users);
     }
+
+    @Test
+    void testWrapper09() {
+        User user = userMapper.findUser(1L);
+        System.out.println(user);
+    }
 }

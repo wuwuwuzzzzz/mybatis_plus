@@ -77,7 +77,7 @@ public class Orders {
     /**
      * 用户名
      */
-
+    @TableField(exist = false)
     private String userName;
 }
 

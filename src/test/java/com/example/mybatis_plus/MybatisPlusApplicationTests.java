@@ -114,4 +114,7 @@ class MybatisPlusApplicationTests {
         updateWrapper.ge("id", 1);
         userMapper.update(null, updateWrapper);
     }
+
+    @Test
+    void testWrapper08() {}
 }

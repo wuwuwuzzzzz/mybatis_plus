@@ -4,12 +4,12 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.core.metadata.TableFieldInfo;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.mybatis_plus.domain.Orders;
 import com.example.mybatis_plus.domain.User;
 import com.example.mybatis_plus.mapper.OrdersMapper;
 import com.example.mybatis_plus.mapper.UserMapper;
+import com.example.mybatis_plus.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -26,6 +26,9 @@ class MybatisPlusApplicationTests {
 
     @Resource
     private OrdersMapper ordersMapper;
+
+    @Resource
+    private UserService userService;
 
     @Test
     void testQueryList() {
@@ -160,5 +163,11 @@ class MybatisPlusApplicationTests {
         page.setCurrent(1);
         IPage<Orders> orders = ordersMapper.findOrders(page);
         System.out.println(orders.getRecords());
+    }
+
+    @Test
+    void testWrapper13() {
+        List<User> list = userService.list();
+        System.out.println(list);
     }
 }

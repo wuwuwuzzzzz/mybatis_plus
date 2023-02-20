@@ -60,5 +60,10 @@ public class Orders {
      * 删除标识（0 未删除 1 已删除）
      */
     private Integer delFlag;
+
+    /**
+     * 用户名
+     */
+    private String userName;
 }
 

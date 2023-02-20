@@ -1,5 +1,7 @@
 package com.example.mybatis_plus;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.TableFieldInfo;
 import com.example.mybatis_plus.domain.User;
 import com.example.mybatis_plus.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
@@ -9,6 +11,7 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 @SpringBootTest
 class MybatisPlusApplicationTests {
@@ -48,5 +51,58 @@ class MybatisPlusApplicationTests {
         user.setAge(100);
         user.setId(4L);
         userMapper.updateById(user);
+    }
+
+    @Test
+    void testWrapper01() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.gt("age", 18);
+        queryWrapper.eq("address", "狐山");
+        List<User> users = userMapper.selectList(queryWrapper);
+        System.out.println(users);
+    }
+
+    @Test
+    void testWrapper02() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.in("id", 1, 2, 3);
+        queryWrapper.between("age", 12, 29);
+        queryWrapper.like("address", "山");
+        List<User> users = userMapper.selectList(queryWrapper);
+        System.out.println(users);
+    }
+
+    @Test
+    void testWrapper03() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.in("id", 1, 2, 3);
+        queryWrapper.gt("age", 10);
+        queryWrapper.orderByDesc("age");
+        List<User> users = userMapper.selectList(queryWrapper);
+        System.out.println(users);
+    }
+
+    @Test
+    void testWrapper04() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("id", "name");
+        List<User> users = userMapper.selectList(queryWrapper);
+        System.out.println(users);
+    }
+
+    @Test
+    void testWrapper05() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select(User.class, tableFieldInfo -> "user_name".equals(tableFieldInfo.getColumn()));
+        List<User> users = userMapper.selectList(queryWrapper);
+        System.out.println(users);
+    }
+
+    @Test
+    void testWrapper06() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>(new User());
+        queryWrapper.select(tableFieldInfo -> !"address".equals(tableFieldInfo.getColumn()));
+        List<User> users = userMapper.selectList(queryWrapper);
+        System.out.println(users);
     }
 }

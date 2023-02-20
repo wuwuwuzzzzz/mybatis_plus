@@ -1,5 +1,6 @@
 package com.example.mybatis_plus;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.TableFieldInfo;
@@ -116,5 +117,11 @@ class MybatisPlusApplicationTests {
     }
 
     @Test
-    void testWrapper08() {}
+    void testWrapper08() {
+        LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.gt(User::getAge, 18);
+        lambdaQueryWrapper.eq(User::getAddress, "狐山");
+        List<User> users = userMapper.selectList(lambdaQueryWrapper);
+        System.out.println(users);
+    }
 }

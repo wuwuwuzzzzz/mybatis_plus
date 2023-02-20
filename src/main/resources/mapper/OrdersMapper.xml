@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.mybatis_plus.mapper.OrdersMapper">
-
-<select id="findOrders" resultType="com.example.mybatis_plus.domain.Orders">
+    <select id="findOrders" resultType="com.example.mybatis_plus.domain.Orders">
+        SELECT *
+        FROM `user` t1
+                 LEFT JOIN orders t2 ON t1.id = t2.user_id
     </select>
 </mapper>

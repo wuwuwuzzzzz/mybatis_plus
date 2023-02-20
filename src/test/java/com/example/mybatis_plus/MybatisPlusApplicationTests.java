@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.TableFieldInfo;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.mybatis_plus.domain.Orders;
 import com.example.mybatis_plus.domain.User;
 import com.example.mybatis_plus.mapper.OrdersMapper;
 import com.example.mybatis_plus.mapper.UserMapper;
@@ -154,6 +155,7 @@ class MybatisPlusApplicationTests {
 
     @Test
     void testWrapper12() {
-
+        List<Orders> orders = ordersMapper.findOrders();
+        System.out.println(orders);
     }
 }
